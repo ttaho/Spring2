@@ -1,6 +1,7 @@
 package hello.hellospirng;
 
 import hello.hellospirng.repository.JdbcMemberRepository;
+import hello.hellospirng.repository.JdbcTemplateMemberRepository;
 import hello.hellospirng.repository.MemberRepository;
 import hello.hellospirng.repository.MemoryMemberRepository;
 import hello.hellospirng.service.MemberService;
@@ -31,6 +32,9 @@ public class SpringConfig {
     public MemberRepository memberRepository(){
 //        return new MemoryMemberRepository();//인터페이스는 new가 안되므로 구현체인 MemoryMemberREpository를 사용
         //이제는 H2 DB를 쓸거기떄문에 위에껀 주석처리
-        return new JdbcMemberRepository(dataSource);
+        //return new JdbcMemberRepository(dataSource);
+
+        //JdbcTemplate사용하기
+        return new JdbcTemplateMemberRepository((dataSource));
     }
 }
