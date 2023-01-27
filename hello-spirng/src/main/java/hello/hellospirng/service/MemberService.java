@@ -21,7 +21,9 @@ public class MemberService {
     /**회원가입**/
     public Long join(Member member){
 
-        // Optional로 한번 감싸면 Optional안에 Member 객체가 있다. 그래서 관련 메소드를 사용가능. Null가능성있으면 Optional쓰면 좋음.
+        //long start = System.currentTimeMillis();// ms단위
+
+// Optional로 한번 감싸면 Optional안에 Member 객체가 있다. 그래서 관련 메소드를 사용가능. Null가능성있으면 Optional쓰면 좋음.
 //        Optional<Member> result = memberRepository.findByName(member.getName());
         // result가 Null이 아니라 값이 있으면 아래가 동작됨.
 //        result.ifPresent(m -> {
@@ -30,9 +32,19 @@ public class MemberService {
 
         //이렇게 해도 됨 이미 findByName이 Optional형태로 뱉으니까 위에처럼 안해도 될듯
         // 같은 이름이 있는 중복 회원 X
+//        try {
+//            validateDuplicateMember(member); //중복 회원 검증
+//            memberRepository.save(member);
+//            return member.getId();
+//        } finally{
+//            long finish = System.currentTimeMillis();
+//            long timeMs = finish - start;
+//            System.out.println("join = " + timeMs + "ms");
+//        }
         validateDuplicateMember(member); //중복 회원 검증
         memberRepository.save(member);
         return member.getId();
+
     }
 
     private void validateDuplicateMember(Member member) {

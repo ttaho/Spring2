@@ -1,5 +1,6 @@
 package hello.hellospirng;
 
+import hello.hellospirng.AOP.TimeTraceAop;
 import hello.hellospirng.repository.*;
 import hello.hellospirng.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +15,17 @@ import javax.sql.DataSource;
 @Configuration
 public class SpringConfig {
 
-    private EntityManager em;
-    public SpringConfig(EntityManager em) {
-        this.em = em;
+    private final MemberRepository memberRepository;
+
+    @Autowired
+    public SpringConfig(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
     }
+
+//    private EntityManager em;
+//    public SpringConfig(EntityManager em) {
+//        this.em = em;
+//    }
 
 //    private DataSource dataSource; //추가해줘야
 //
@@ -28,12 +36,11 @@ public class SpringConfig {
 
     @Bean
     public MemberService memberService(){
-        return new MemberService(memberRepository());
+
+        return new MemberService(memberRepository);
     }
-
-
-    @Bean
-    public MemberRepository memberRepository(){
+//    @Bean
+//    public MemberRepository memberRepository(){
 //        return new MemoryMemberRepository();//인터페이스는 new가 안되므로 구현체인 MemoryMemberREpository를 사용
         //이제는 H2 DB를 쓸거기떄문에 위에껀 주석처리
         //return new JdbcMemberRepository(dataSource);
@@ -42,6 +49,7 @@ public class SpringConfig {
         //return new JdbcTemplateMemberRepository((dataSource));
 
         //Jpa 사용하기
-        return new JpaMemberRepository(em);
-    }
+//        return new JpaMemberRepository(em);
+
+//    }
 }
