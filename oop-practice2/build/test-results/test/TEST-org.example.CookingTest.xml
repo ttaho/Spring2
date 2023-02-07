@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.example.CookingTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-02-07T11:40:30" hostname="DESKTOP-GIJEVAG" time="0.178">
+  <properties/>
+  <testcase name="硫붾돱�뿉 �빐�떦�븯�뒗 �쓬�떇�쓣 留뚮뱺�떎." classname="org.example.CookingTest" time="0.178"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
